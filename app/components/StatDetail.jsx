@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const StatCard = ({ stat }) => {
+const StatDetail = ({ stat }) => {
     const InfoCard = ({ data, title }) => (
         <div className="flex flex-col gap-2 w-full md:w-fit border-2 rounded-lg p-4">
             <h2 className='text-xl font-semibold'>{title}</h2>
@@ -50,4 +50,4 @@ const StatCard = ({ stat }) => {
     )
 }
 
-export default StatCard
+export default StatDetail

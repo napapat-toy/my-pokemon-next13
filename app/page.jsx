@@ -51,7 +51,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center mx-4 md:mx-2 max-w-[1440px]">
-      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 py-4">
+      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4">
         <SearchPokemon pokemons={pokemons.results} />
         <DropdownMenu
           dataMenu={[20, 50, 100]}

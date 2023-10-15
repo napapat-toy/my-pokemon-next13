@@ -1,6 +1,6 @@
 'use client'
 
-import TypeCard from '@/app/components/Cards/TypeCard'
+import TypeDetail from '@/app/components/TypeDetail'
 import { useEffect, useState } from 'react'
 
 const Type = ({ params: { typeName } }) => {
@@ -20,7 +20,7 @@ const Type = ({ params: { typeName } }) => {
     }
 
     return (
-        <TypeCard type={type} />
+        <TypeDetail type={type} />
     )
 }
 

@@ -1,6 +1,6 @@
 'use client'
 
-import GameVersionCard from '@/app/components/Cards/GameVersionCard'
+import GameVersionDetail from '@/app/components/GameVersionDetail'
 import { useEffect, useState } from 'react'
 
 const Version = ({ params: { gameVersionName } }) => {
@@ -20,7 +20,7 @@ const Version = ({ params: { gameVersionName } }) => {
     }
 
     return (
-        <GameVersionCard gameVersion={gameVersion} />
+        <GameVersionDetail gameVersion={gameVersion} />
     )
 }
 

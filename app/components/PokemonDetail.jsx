@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { colours } from '@/data'
+import TypeCard from './Cards/TypeCard'
 
 const NotFound = () => (
   <div className="flex flex-col items-center">
@@ -9,9 +9,9 @@ const NotFound = () => (
   </div>
 )
 
-const InfoText = ({ title, value, isLink }) => (
+const InfoText = ({ title, value }) => (
   <div className="flex gap-2">
-    <p className={`text-xl font-semibold capitalize ${isLink && 'hover:underline hover:underline-offset-4'}`}>{title}:</p>
+    <p className={`text-xl font-semibold capitalize`}>{title}:</p>
     <p className='text-lg'>{value}</p>
   </div>
 )
@@ -21,31 +21,16 @@ const StatInfoCard = ({ stats }) => (
     <h2 className='text-xl font-semibold'>Stats</h2>
     <div className="flex flex-col">
       {stats.map((statInfo) => (
-        <Link key={`stat-${statInfo.stat.name}`} href={`/stats/${statInfo.stat.name}`} className='text-lg capitalize'>
-          <InfoText title={statInfo.stat.name} value={statInfo.base_stat} isLink={true} />
-        </Link>
+        <div key={`stat-${statInfo.stat.name}`} className="flex gap-2">
+          <Link href={`/stats/${statInfo.stat.name}`} className='text-lg capitalize'>
+            <p className={`text-xl font-semibold capitalize hover:underline hover:underline-offset-4`}>{statInfo.stat.name}:</p>
+          </Link>
+          <p className='text-lg'>{statInfo.base_stat}</p>
+        </div>
       ))}
     </div>
   </div>
 )
-
-const TypeInfoCard = ({ types }) => {
-  return (
-    <div className="flex flex-wrap items-center gap-4 mt-2">
-      <h2 className='text-xl font-semibold'>Types:</h2>
-      {types.map(({ type }) => (
-        <div
-          key={`type-${type.name}`}
-          style={{ backgroundColor: colours[type.name] }}
-          className={`p-2 text-white rounded-md`}>
-          <Link key={`type-${type.name}`} href={`/types/${type.name}`} className='text-lg capitalize '>
-            {type.name}
-          </Link>
-        </div>
-      ))}
-    </div>
-  )
-}
 
 const AbilityInfoCard = ({ abilities }) => (
   <div className="flex-1 flex flex-col gap-2 border-2 rounded-lg p-4">
@@ -53,7 +38,9 @@ const AbilityInfoCard = ({ abilities }) => (
     <div className="flex flex-col">
       {abilities.map(({ ability }) => (
         <div key={`ability-${ability.name}`} className='text-lg capitalize'>
-          {ability.name}
+          <Link href={`/abilities/${ability.name}`} className='text-lg capitalize hover:underline hover:underline-offset-4'>
+            {ability.name}
+          </Link>
         </div>
       ))}
     </div>
@@ -92,7 +79,7 @@ const GameVersion = ({ versions }) => (
   </div>
 )
 
-const PokemonDetailCard = ({ pokemon = [] }) => {
+const PokemonDetail = ({ pokemon = [] }) => {
   console.log(pokemon);
   return (
     <div className='flex flex-col w-full h-fit items-center bg-white rounded-md p-4 max-w-[1440px] shadow-lg'>
@@ -113,7 +100,12 @@ const PokemonDetailCard = ({ pokemon = [] }) => {
               <InfoText title='ID' value={pokemon.id} />
               <InfoText title='Height' value={pokemon.height} />
               <InfoText title='Weight' value={pokemon.weight} />
-              <TypeInfoCard types={pokemon.types} />
+              <h2 className='text-xl font-semibold'>Types:</h2>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {pokemon.types.map(({ type }) => (
+                  <TypeCard key={`type-${type.name}`} typeName={type.name} />
+                ))}
+              </div>
             </div>
             <StatInfoCard stats={pokemon.stats} />
             <AbilityInfoCard abilities={pokemon.abilities} />
@@ -128,4 +120,4 @@ const PokemonDetailCard = ({ pokemon = [] }) => {
   )
 }
 
-export default PokemonDetailCard
+export default PokemonDetail

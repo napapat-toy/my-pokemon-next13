@@ -24,7 +24,7 @@ const SearchPokemon = () => {
                     className='p-2 mx-2 text-xl rounded-lg outline-none'
                 />
             </Combobox >
-            <button type='button' onClick={handleSearch} className='py-2 px-6 h-full bg-slate-400 hover:bg-slate-700 hover:text-white rounded-full'>Search</button>
+            <button type='button' onClick={handleSearch} className='py-2 px-6 h-full bg-slate-400 hover:bg-slate-700 hover:text-white rounded-full transition-all duration-75'>Search</button>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import StatCard from '@/app/components/Cards/StatCard'
+import StatDetail from '@/app/components/StatDetail'
 import { useEffect, useState } from 'react'
 
 const Stat = ({ params: { statName } }) => {
@@ -20,7 +20,7 @@ const Stat = ({ params: { statName } }) => {
     }
 
     return (
-        <StatCard stat={stat} />
+        <StatDetail stat={stat} />
     )
 }
 

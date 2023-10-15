@@ -28,7 +28,7 @@ const Pagination = ({ handlePagination, paginate = [], currentPage, next, previo
         <button
             type="button"
             onClick={() => handlePagination(goToPage)}
-            className={`w-[46px] p-4 flex items-center justify-center flex-1 text-center ${currentPage === goToPage ? 'bg-slate-900' : 'bg-slate-600 hover:bg-slate-700'} text-white font-semibold rounded-xl`}>
+            className={`w-[46px] p-4 flex items-center justify-center flex-1 text-center ${currentPage === goToPage ? 'bg-slate-900' : 'bg-slate-600 hover:bg-slate-700'} text-white font-semibold rounded-xl transition-all duration-75`}>
             {goToPage}
         </button>
     )
@@ -37,7 +37,7 @@ const Pagination = ({ handlePagination, paginate = [], currentPage, next, previo
         <button
             onClick={() => onClick()}
             disabled={disableCondition}
-            className={`w-[46px] p-4 flex items-center justify-center flex-1 text-center bg-slate-600 hover:bg-slate-700 text-white font-semibold rounded-xl disabled:bg-slate-400`}
+            className={`w-[46px] p-4 flex items-center justify-center flex-1 text-center bg-slate-600 hover:bg-slate-700 text-white font-semibold rounded-xl disabled:bg-slate-400 transition-all duration-75`}
         >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d={svgD} />
