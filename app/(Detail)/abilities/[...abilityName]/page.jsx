@@ -18,7 +18,7 @@ const Ability = ({ params: { abilityName } }) => {
         )
     }
 
-    console.log(ability);
+    // console.log(ability);
 
     return (
         <div>Ability</div>

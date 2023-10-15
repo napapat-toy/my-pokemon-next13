@@ -80,7 +80,6 @@ const GameVersion = ({ versions }) => (
 )
 
 const PokemonDetail = ({ pokemon = [] }) => {
-  console.log(pokemon);
   return (
     <div className='flex flex-col w-full h-fit items-center bg-white rounded-md p-4 max-w-[1440px] shadow-lg'>
       {Object.keys(pokemon).length > 0 ? (

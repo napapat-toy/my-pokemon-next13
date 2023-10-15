@@ -18,7 +18,7 @@ const Move = ({ params: { moveName } }) => {
         )
     }
 
-    console.log(move);
+    // console.log(move);
 
     return (
         <div>Move</div>

@@ -18,7 +18,7 @@ const Nature = ({ params: { natureName } }) => {
         )
     }
 
-    console.log(nature);
+    // console.log(nature);
 
     return (
         <div>Nature</div>

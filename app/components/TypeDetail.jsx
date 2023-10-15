@@ -40,8 +40,6 @@ const TypeDetail = ({ type }) => {
         </div>
     )
 
-    console.log(type);
-
     return (
         <div className='bg-white rounded-md p-4 mx-4 max-w-[1440px] shadow-lg'>
             <div className="flex flex-col items-center gap-4">

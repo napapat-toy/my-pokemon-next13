@@ -19,6 +19,8 @@ const Version = ({ params: { gameVersionName } }) => {
         )
     }
 
+    // console.log(gameVersion);
+
     return (
         <GameVersionDetail gameVersion={gameVersion} />
     )
