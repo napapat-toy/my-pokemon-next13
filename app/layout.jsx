@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className='scroll-smooth'>
       <body className={`${inter.className} relative bg-slate-200`}>
         <Navbar />
-        <main className='h-full w-full mt-24 mb-8 flex flex-col items-center'>
+        <main className='h-full w-full my-4 mb-8 flex flex-col items-center'>
           {children}
         </main>
       </body>

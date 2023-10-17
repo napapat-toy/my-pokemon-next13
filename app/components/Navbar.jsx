@@ -2,9 +2,9 @@ import Link from "next/link"
 
 const Navbar = () => {
     return (
-        <div className="fixed top-0 w-full p-4 bg-sky-300 flex justify-center">
+        <div className="sticky z-50 top-0 w-full p-4 bg-sky-300 flex justify-center">
             <div className="max-w-[1440px] w-full flex justify-between">
-                <Link href='/' className="text-4xl font-semibold text-gray-800 tracking-wide">
+                <Link href='/' className="text-4xl font-semibold text-gray-800 tracking-wide hover:underline">
                     Pokemon App
                 </Link>
                 <Link href='/'>

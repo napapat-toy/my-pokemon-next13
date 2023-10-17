@@ -1,4 +1,3 @@
-import { colours } from "@/data"
 import Link from "next/link"
 import TypeCard from "./Cards/TypeCard"
 
@@ -6,7 +5,7 @@ const TypeDetail = ({ type }) => {
     const DamageRelationsCard = ({ name, type }) => (
         <div className="w-full md:w-fit flex flex-col gap-2 border-2 rounded-lg p-4">
             <h2 className='text-xl font-semibold capitalize'>{name.split('_').join(' ')}</h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex-1 flex flex-wrap gap-2">
                 {type?.map((damageType) => (
                     <TypeCard key={`damageType-${damageType.name}`} typeName={damageType.name} />
                 ))}
@@ -49,7 +48,7 @@ const TypeDetail = ({ type }) => {
                     </h2>
                     <TypeCard typeName={type.name} />
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="w-full flex flex-wrap gap-2">
                     {type.damage_relations && Object.entries(type.damage_relations).map(([key, type]) => (
                         <DamageRelationsCard key={`${key}`} name={key} type={type} />
                     ))}

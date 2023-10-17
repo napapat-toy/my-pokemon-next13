@@ -28,7 +28,7 @@ const StatDetail = ({ stat }) => {
     )
 
     const AffectingCard = ({ title, increase = [], decrease = [] }) => (
-        <div className="w-full md:w-fit flex flex-col gap-2 border-2 rounded-lg p-4">
+        <div className="w-full flex flex-col gap-2 border-2 rounded-lg p-4">
             <h2 className='text-xl font-semibold capitalize'>{title}</h2>
             <div className="flex flex-wrap gap-2">
                 <InfoCard data={increase} title='Increase' />

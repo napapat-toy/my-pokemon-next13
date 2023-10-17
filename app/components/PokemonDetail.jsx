@@ -17,7 +17,7 @@ const InfoText = ({ title, value }) => (
 )
 
 const StatInfoCard = ({ stats }) => (
-  <div className="flex-1 flex flex-col border-2 rounded-lg p-4">
+  <div className="w-full flex-1 flex flex-col border-2 rounded-lg p-4">
     <h2 className='text-xl font-semibold'>Stats</h2>
     <div className="flex flex-col">
       {stats.map((statInfo) => (
@@ -33,7 +33,7 @@ const StatInfoCard = ({ stats }) => (
 )
 
 const AbilityInfoCard = ({ abilities }) => (
-  <div className="flex-1 flex flex-col gap-2 border-2 rounded-lg p-4">
+  <div className="w-full flex-1 flex flex-col gap-2 border-2 rounded-lg p-4">
     <h2 className='text-xl font-semibold'>Ability</h2>
     <div className="flex flex-col">
       {abilities.map(({ ability }) => (
@@ -48,7 +48,7 @@ const AbilityInfoCard = ({ abilities }) => (
 )
 
 const MoveInfoCard = ({ moves }) => (
-  <div className="flex-1 flex flex-col gap-2 border-2 rounded-lg p-4">
+  <div className="w-full flex-1 flex flex-col gap-2 border-2 rounded-lg p-4">
     <h2 className='text-xl font-semibold'>Moves</h2>
     <div className="flex flex-wrap gap-1">
       {moves.map(({ move }, index) => (
@@ -64,7 +64,7 @@ const MoveInfoCard = ({ moves }) => (
 )
 
 const GameVersion = ({ versions }) => (
-  <div className="flex-1 flex flex-col gap-2 border-2 rounded-lg p-4">
+  <div className="w-full flex-1 flex flex-col gap-2 border-2 rounded-lg p-4">
     <h2 className='text-xl font-semibold'>Game Versions</h2>
     <div className="flex flex-wrap gap-1">
       {versions.map(({ version }, index) => (
@@ -81,7 +81,7 @@ const GameVersion = ({ versions }) => (
 
 const PokemonDetail = ({ pokemon = [] }) => {
   return (
-    <div className='flex flex-col w-full h-fit items-center bg-white rounded-md p-4 max-w-[1440px] shadow-lg'>
+    <div className='flex flex-col h-fit items-center bg-white rounded-md p-4 mx-4 max-w-[1440px] shadow-lg'>
       {Object.keys(pokemon).length > 0 ? (
         <div className="flex flex-col gap-2 items-center">
           <h2 className='text-2xl text-center font-bold text-gray-800 capitalize'>{pokemon.name}</h2>

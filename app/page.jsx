@@ -13,6 +13,7 @@ export default function Home() {
   const [limit, setLimit] = useState(20)
   const [currentPage, setCurrentPage] = useState(1)
   const [paginate, setPaginate] = useState([])
+  const [allPokemonsName, setAllPokemonsName] = useState([])
   const router = useRouter()
 
   const apiURL = useMemo(() => {
@@ -22,13 +23,18 @@ export default function Home() {
   useEffect(() => {
     fetch(apiURL)
       .then((data) =>
-        data.json()
-      ).then((pokemons) => {
+        data.json())
+      .then((pokemons) => {
         setPokemons(pokemons)
         const totalPages = genPageIndex(Math.ceil(pokemons.count / limit))
         setPaginate(totalPages)
-      }
-      )
+      })
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
+      .then((data) =>
+        data.json())
+      .then((pokemons) => {
+        setAllPokemonsName(pokemons.results)
+      })
   }, [currentPage, limit, apiURL])
 
   const handlePagination = (numOfPage) => {
@@ -52,7 +58,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center mx-4 md:mx-2 max-w-[1440px]">
       <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4">
-        <SearchPokemon pokemons={pokemons.results} />
+        <SearchPokemon pokemons={allPokemonsName} />
         <DropdownMenu
           dataMenu={[20, 50, 100]}
           title='Show Limit'

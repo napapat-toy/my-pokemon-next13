@@ -1,6 +1,6 @@
 'use client'
 
-import PokemonDetailCard from '@/app/components/PokemonDetail'
+import PokemonDetail from '@/app/components/PokemonDetail'
 import { useEffect, useState } from 'react'
 
 const Pokemon = ({ params: { pokemonName } }) => {
@@ -20,7 +20,7 @@ const Pokemon = ({ params: { pokemonName } }) => {
     }
 
     return (
-        <PokemonDetailCard pokemon={pokemon} />
+        <PokemonDetail pokemon={pokemon} />
     )
 }
 

@@ -1,5 +1,6 @@
 'use client'
 
+import AbilityDetail from '@/app/components/AbilityDetail'
 import { useEffect, useState } from 'react'
 
 const Ability = ({ params: { abilityName } }) => {
@@ -18,10 +19,8 @@ const Ability = ({ params: { abilityName } }) => {
         )
     }
 
-    // console.log(ability);
-
     return (
-        <div>Ability</div>
+        <AbilityDetail ability={ability} />
     )
 }
 

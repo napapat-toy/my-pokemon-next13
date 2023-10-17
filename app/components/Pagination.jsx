@@ -1,4 +1,4 @@
-import DropdownMenu from "./DropdownMenu"
+import { Menu, Transition } from "@headlessui/react"
 
 const Pagination = ({ handlePagination, paginate = [], currentPage, next, previous }) => {
 
@@ -24,62 +24,123 @@ const Pagination = ({ handlePagination, paginate = [], currentPage, next, previo
         return pageSet
     }
 
-    const ButtonPage = ({ goToPage }) => (
+    const paginateSet = genPageSet()
+
+    const ArrowIcon = ({ direction }) => {
+        const left = 'M15.75 19.5L8.25 12l7.5-7.5'
+        const right = 'M8.25 4.5l7.5 7.5-7.5 7.5'
+
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
+                <path strokeLinecap="round" strokeLinejoin="round" d={direction === 'right' ? right : left} />
+            </svg>
+        )
+    }
+
+    const ButtonPage = ({ pageNumber }) => (
         <button
             type="button"
-            onClick={() => handlePagination(goToPage)}
-            className={`w-[46px] p-4 flex items-center justify-center flex-1 text-center ${currentPage === goToPage ? 'bg-slate-900' : 'bg-slate-600 hover:bg-slate-700'} text-white font-semibold rounded-xl transition-all duration-75`}>
-            {goToPage}
+            onClick={() => handlePagination(pageNumber)}
+            className={`inline-flex items-center px-4 py-2.5 text-md font-semibold ring-1 ring-inset ring-gray-300 ${currentPage === pageNumber ? 'text-white bg-sky-600 hover:bg-sky-500' : 'text-gray-400 bg-white hover:bg-sky-500 hover:text-white'} transition-all duration-75`}
+        >
+            {pageNumber}
         </button>
     )
 
-    const ButtonArrow = ({ children, onClick, disableCondition, svgD }) => (
+    const ButtonArrow = ({ children, onClick, disableCondition, direction = 'left' }) => (
         <button
             onClick={() => onClick()}
             disabled={disableCondition}
-            className={`w-[46px] p-4 flex items-center justify-center flex-1 text-center bg-slate-600 hover:bg-slate-700 text-white font-semibold rounded-xl disabled:bg-slate-400 transition-all duration-75`}
+            className={`inline-flex items-center ${direction === 'left' ? 'rounded-l-md' : 'rounded-r-md'} p-2 text-gray-400 ring-1 ring-inset ring-gray-300 bg-white hover:bg-sky-500 hover:text-white disabled:text-gray-300 disabled:bg-gray-50`}
         >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d={svgD} />
-            </svg>
+            <ArrowIcon direction={direction} />
             {children}
         </button >
     )
 
-    const paginateSet = genPageSet()
+    const ButtonMenu = ({ title }) => (
+        <Menu as="div" className="w-full inline-block text-left">
+            <div>
+                <Menu.Button className={`w-full inline-flex items-center justify-center px-4 py-2.5 text-md font-semibold ring-1 ring-inset ring-gray-300 text-gray-400 bg-white hover:bg-sky-500 hover:text-white transition-all duration-75 cursor-pointer`}>
+                    {title}
+                </Menu.Button>
+            </div>
+            <Transition
+                as='div'
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+            >
+                <Menu.Items
+                    className="z-20 absolute overflow-auto max-h-80 right-0 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                >
+                    {paginate.map((value) => (
+                        <div key={`Value-${value}`} className="px-1 py-1">
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <button
+                                        onClick={() => handlePagination(value)}
+                                        className={`${active ? 'bg-sky-500 text-white' : 'text-gray-900'} ${value === currentPage && 'bg-sky-600 hover:bg-sky-500 text-white'} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                                    >
+                                        {value}
+                                    </button>
+                                )}
+                            </Menu.Item>
+                        </div>
+                    ))}
+                </Menu.Items>
+            </Transition>
+        </Menu>
+    )
+
+    const ButtonPaginate = () => (
+        <div className="flex -space-x-px">
+            {currentPage > startPage + 1 && <ButtonPage pageNumber={startPage} />}
+            {currentPage > startPage + 2 && <ButtonMenu title='...' />}
+            {paginateSet.map((count) => (
+                <ButtonPage key={`pagination-${count}`} pageNumber={count} />
+            ))}
+            {currentPage < lastPage - 2 && <ButtonMenu title='...' />}
+            {paginateSet[paginateSet.length - 1] !== lastPage && <ButtonPage pageNumber={lastPage} />}
+        </div>
+    )
 
     return (
-        <div className="flex justify-between items-center gap-4 my-6">
-            <ButtonArrow
-                disableCondition={!previous || currentPage === 1}
-                onClick={() => handlePagination(currentPage - 1)}
-                svgD={"M15.75 19.5L8.25 12l7.5-7.5"}
-            />
-            <div className="hidden md:flex items-center gap-4">
-                {currentPage > startPage + 1 && <ButtonPage goToPage={startPage} />}
-                {currentPage > startPage + 2 && <div className="text-4xl flex-1 hidden md:block">...</div>}
-
-                {paginateSet.map((count) => (
-                    <ButtonPage key={`pagination-${count}`} goToPage={count} />
-                ))}
-
-                {currentPage < lastPage - 2 && <div className="text-4xl flex-1 hidden md:block">...</div>}
-                {paginateSet[paginateSet.length - 1] !== lastPage && <ButtonPage goToPage={lastPage} />}
-            </div>
-            <div className="flex w-full justify-center items-center md:hidden">
-                <DropdownMenu
-                    dataMenu={paginate}
-                    title={currentPage}
-                    current={currentPage}
-                    handleClick={handlePagination}
+        <div className="w-full md:w-fit flex items-center justify-between border-t border-gray-200 bg-white p-4 rounded-md my-6">
+            <div className="hidden md:flex flex-1 items-center justify-between -space-x-px">
+                <ButtonArrow
+                    disableCondition={!previous || currentPage === 1}
+                    onClick={() => handlePagination(currentPage - 1)}
+                    direction='left'
+                />
+                <ButtonPaginate />
+                <ButtonArrow
+                    disableCondition={!next || currentPage === paginate.length}
+                    onClick={() => handlePagination(currentPage + 1)}
+                    direction='right'
                 />
             </div>
-            <ButtonArrow
-                disableCondition={!next || currentPage === paginate.length}
-                onClick={() => handlePagination(currentPage + 1)}
-                svgD={"M8.25 4.5l7.5 7.5-7.5 7.5"}
-            />
-        </div>
+            <div className="flex md:hidden justify-between flex-initial w-full -space-x-px">
+                <ButtonArrow
+                    disableCondition={!previous || currentPage === 1}
+                    onClick={() => handlePagination(currentPage - 1)}
+                    direction='left'
+                >
+                    Previous
+                </ButtonArrow>
+                <ButtonMenu title={`${currentPage} / ${lastPage}`} />
+                <ButtonArrow
+                    disableCondition={!next || currentPage === paginate.length}
+                    onClick={() => handlePagination(currentPage + 1)}
+                    direction='right'
+                >
+                    Next
+                </ButtonArrow>
+            </div>
+        </div >
     )
 }
 

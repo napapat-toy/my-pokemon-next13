@@ -19,7 +19,7 @@ export default function DropdownMenu({ dataMenu, title, current, handleClick }) 
                     leaveTo="transform opacity-0 scale-95"
                 >
                     <Menu.Items
-                        className="absolute overflow-auto max-h-80 right-0 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        className="z-20 absolute overflow-auto max-h-80 right-0 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     >
                         {dataMenu.map((value) => (
                             <div key={`Value-${value}`} className="px-1 py-1">

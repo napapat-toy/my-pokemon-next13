@@ -3,5 +3,12 @@
 @tailwind utilities;
 
 body {
-    height:100vh;
+    @apply scroll-smooth
+}
+
+@layer components {
+    ::-webkit-scrollbar {
+        /* Customize the scrollbar width */
+        @apply hidden
+    }
 }
