@@ -1,16 +1,55 @@
 import Link from "next/link";
 
 const AbilityDetail = ({ ability }) => {
-    // console.log(ability);
 
-    const InfoText = ({ title, value }) => (
-        <div className="flex gap-2">
-            <p className={`flex-2 text-xl font-semibold capitalize`}>{title}:</p>
-            <p className='flex-1 text-lg'>{value}</p>
+    const TopicName = ({ topic, value }) => (
+        <div className="w-full flex justify-center items-center gap-2">
+            <h2 className='text-3xl md:text-4xl font-semibold capitalize'>
+                {topic}:
+            </h2>
+            <p className="font-light text-3xl md:text-4xl capitalize">{value}</p>
         </div>
     )
 
-    const PokemonInfoCard = ({ pokemons = [] }) => (
+    const EffectChange = ({ effectChanges }) => (
+        <div className="flex flex-col mdd:flex-row gap-2 border-2 rounded-lg p-4">
+            <p className={`flex-2 text-xl font-semibold capitalize`}>Effect Changes</p>
+            {effectChanges.map(({ effect_entries, version_group }) => (
+                <div key={`Effect Changes-${version_group.name}`} className="mt-2">
+                    <p className={`flex-2 text-xl font-semibold capitalize`}>{version_group.name}:</p>
+                    <EffectEntry effectEntry={effect_entries} />
+                </div>
+            ))
+            }
+        </div>
+    )
+    const EffectEntry = ({ effectEntry }) => (
+        <div className="flex flex-col mdd:flex-row gap-2 border-2 rounded-lg p-4 mt-2">
+            <p className={`flex-2 text-xl font-semibold capitalize`}>Effect Entries</p>
+            {effectEntry.map((effect_entry) => effect_entry.language.name === 'en' && (
+                <div key={`effect-${effect_entry.language}`}>
+                    <p className='flex-1 text-lg'>{effect_entry.effect}</p>
+                    {effect_entry.short_effect && <p className='flex-1 text-lg mt-4'><span className="font-light text-base">In Short: </span>{effect_entry.short_effect}</p>}
+                </div>
+            )
+            )}
+        </div>
+    )
+
+    const FlavorTextEntry = ({ flavorText }) => (
+        <div className="flex flex-col mdd:flex-row gap-2 border-2 rounded-lg p-4">
+            <p className={`flex-2 text-xl font-semibold capitalize`}>Flavor Text</p>
+            {flavorText.map(({ flavor_text, language, version_group }) => language.name === 'en' && (
+                <div key={`Flavor Text-${version_group.name}`} className="border-2 rounded-lg p-4 mt-2">
+                    <p className={`flex-2 text-xl font-semibold capitalize`}>{version_group.name}:</p>
+                    <p className='flex-1 text-lg mt-2'>{flavor_text}</p>
+                </div>
+            ))
+            }
+        </div>
+    )
+
+    const PokemonNameCard = ({ pokemons = [] }) => (
         <div className="flex flex-col gap-2 border-2 rounded-lg p-4">
             <h2 className='text-xl font-semibold'>Pokemons</h2>
             <div className="flex flex-wrap gap-2">
@@ -24,21 +63,16 @@ const AbilityDetail = ({ ability }) => {
     )
 
     return (
-        <div className='flex flex-col h-fit items-center bg-white rounded-md p-4 mx-4 max-w-[1440px] shadow-lg'>
+        <div className='flex flex-col h-fit items-center justify-center bg-white rounded-md p-4 mx-4 max-w-[1440px] shadow-lg'>
             {Object.keys(ability).length > 0 && (
                 <div className="w-full flex flex-col gap-4 justify-between">
-                    <div className="w-full flex justify-center items-center gap-2">
-                        <h2 className='text-4xl font-semibold capitalize'>
-                            Ability:
-                        </h2>
-                        <p className="font-light text-4xl capitalize">{ability.name}</p>
+                    <TopicName topic='Ability' value={ability.name} />
+                    <div className="flex flex-col gap-4">
+                        <EffectChange effectChanges={ability.effect_changes} />
+                        <EffectEntry effectEntry={ability.effect_entries} />
+                        <FlavorTextEntry flavorText={ability.flavor_text_entries} />
                     </div>
-                    <div className="flex flex-col border-2 rounded-lg p-4">
-                        <InfoText title='Effect Changes' value={ability.effect_changes[0]?.effect_entries[1].effect} />
-                        <InfoText title='Effect Entries' value={ability.effect_entries[1]?.effect} />
-                        <InfoText title='Flavor Text Entries' value={ability.flavor_text_entries[0].flavor_text} />
-                    </div>
-                    <PokemonInfoCard pokemons={ability.pokemon} />
+                    <PokemonNameCard pokemons={ability.pokemon} />
                 </div>
             )}
         </div>

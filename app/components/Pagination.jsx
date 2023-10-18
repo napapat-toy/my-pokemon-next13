@@ -51,7 +51,7 @@ const Pagination = ({ handlePagination, paginate = [], currentPage, next, previo
         <button
             onClick={() => onClick()}
             disabled={disableCondition}
-            className={`inline-flex items-center ${direction === 'left' ? 'rounded-l-md' : 'rounded-r-md'} p-2 text-gray-400 ring-1 ring-inset ring-gray-300 bg-white hover:bg-sky-500 hover:text-white disabled:text-gray-300 disabled:bg-gray-50`}
+            className={`inline-flex items-center ${direction === 'left' ? 'rounded-l-md' : 'rounded-r-md flex-row-reverse'} gap-2 p-2 px-4 text-gray-400 ring-1 ring-inset ring-gray-300 bg-white hover:bg-sky-500 hover:text-white disabled:text-gray-300 disabled:bg-gray-50`}
         >
             <ArrowIcon direction={direction} />
             {children}
@@ -60,11 +60,9 @@ const Pagination = ({ handlePagination, paginate = [], currentPage, next, previo
 
     const ButtonMenu = ({ title }) => (
         <Menu as="div" className="w-full inline-block text-left">
-            <div>
-                <Menu.Button className={`w-full inline-flex items-center justify-center px-4 py-2.5 text-md font-semibold ring-1 ring-inset ring-gray-300 text-gray-400 bg-white hover:bg-sky-500 hover:text-white transition-all duration-75 cursor-pointer`}>
-                    {title}
-                </Menu.Button>
-            </div>
+            <Menu.Button className={`w-full inline-flex items-center justify-center px-4 py-2.5 text-md font-semibold ring-1 ring-inset ring-gray-300 text-gray-400 bg-white hover:bg-sky-500 hover:text-white transition-all duration-75 cursor-pointer`}>
+                {title}
+            </Menu.Button>
             <Transition
                 as='div'
                 enter="transition ease-out duration-100"
@@ -123,13 +121,13 @@ const Pagination = ({ handlePagination, paginate = [], currentPage, next, previo
                     direction='right'
                 />
             </div>
-            <div className="flex md:hidden justify-between flex-initial w-full -space-x-px">
+            <div className="flex md:hidden items-center flex-1 w-full -space-x-px">
                 <ButtonArrow
                     disableCondition={!previous || currentPage === 1}
                     onClick={() => handlePagination(currentPage - 1)}
                     direction='left'
                 >
-                    Previous
+                    Back
                 </ButtonArrow>
                 <ButtonMenu title={`${currentPage} / ${lastPage}`} />
                 <ButtonArrow

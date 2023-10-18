@@ -36,8 +36,8 @@ const AbilityInfoCard = ({ abilities }) => (
   <div className="w-full flex-1 flex flex-col gap-2 border-2 rounded-lg p-4">
     <h2 className='text-xl font-semibold'>Ability</h2>
     <div className="flex flex-col">
-      {abilities.map(({ ability }) => (
-        <div key={`ability-${ability.name}`} className='text-lg capitalize'>
+      {abilities.map(({ ability }, index) => (
+        <div key={`ability-${ability.name}-${index}`} className='text-lg capitalize'>
           <Link href={`/abilities/${ability.name}`} className='text-lg capitalize hover:underline hover:underline-offset-4'>
             {ability.name}
           </Link>
@@ -87,10 +87,11 @@ const PokemonDetail = ({ pokemon = [] }) => {
           <h2 className='text-2xl text-center font-bold text-gray-800 capitalize'>{pokemon.name}</h2>
           <div className="flex flex-col">
             <Image
-              src={pokemon.sprites.front_default ? pokemon.sprites.front_default : 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png'}
+              src={pokemon.sprites.front_default ? pokemon.sprites.front_default : '/Poké_Ball_icon.svg.png'}
               alt={pokemon.name}
               width={192}
               height={192}
+              priority={true}
               className="object-cover"
             />
           </div>

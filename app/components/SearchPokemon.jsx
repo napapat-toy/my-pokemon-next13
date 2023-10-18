@@ -54,6 +54,7 @@ const SearchPokemon = ({ pokemons }) => {
             {pokemonsName.filter((pokemonName) => pokemonName.toLowerCase().includes(query.toLowerCase())).map((value) => (
                 <div key={`Value-${value}`} className="px-1 py-1">
                     <button
+                        type='button'
                         onClick={() => handleClick(value)}
                         className={`hover:bg-sky-500 active:bg-sky-600 hover:text-white focus:bg-sky-500 focus:text-white text-gray-900 group flex w-full items-center rounded-md px-2 py-2 text-lg outline-none capitalize`}
                     >
