@@ -54,7 +54,7 @@ const AbilityDetail = ({ ability }) => {
             <h2 className='text-xl font-semibold'>Pokemons</h2>
             <div className="flex flex-wrap gap-2">
                 {pokemons?.map(({ pokemon }, index) => (
-                    <Link key={`pokemon-${pokemon.name}`} href={`/pokemons/${pokemon.name}`} className='text-lg capitalize hover:underline hover:underline-offset-4'>
+                    <Link key={`pokemon-${pokemon.name}-${index}`} href={`/pokemons/${pokemon.name}`} className='text-lg capitalize hover:underline hover:underline-offset-4'>
                         {pokemon.name}{index !== pokemons.length - 1 && <span>,</span>}
                     </Link>
                 ))}
