@@ -98,8 +98,8 @@ const PokemonDetail = ({ pokemon = [] }) => {
           <div className="w-full flex flex-col md:flex-row gap-4 justify-between">
             <div className="flex-1 flex flex-col border-2 rounded-lg p-4">
               <InfoText title='ID' value={pokemon.id} />
-              <InfoText title='Height' value={pokemon.height} />
-              <InfoText title='Weight' value={pokemon.weight} />
+              <InfoText title='Height' value={`${(pokemon.height / 10).toFixed(1)} m`} />
+              <InfoText title='Weight' value={`${(pokemon.weight / 10).toFixed(1)} kgs`} />
               <h2 className='text-xl font-semibold'>Types:</h2>
               <div className="flex flex-wrap gap-2 mt-2">
                 {pokemon.types.map(({ type }) => (
