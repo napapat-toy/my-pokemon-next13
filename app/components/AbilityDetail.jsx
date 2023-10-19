@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FlavorTextEntry from "./FlavorTextEntry";
 
 const AbilityDetail = ({ ability }) => {
 
@@ -36,19 +37,6 @@ const AbilityDetail = ({ ability }) => {
         </div>
     )
 
-    const FlavorTextEntry = ({ flavorText }) => (
-        <div className="flex flex-col mdd:flex-row gap-2 border-2 rounded-lg p-4">
-            <p className={`flex-2 text-xl font-semibold capitalize`}>Flavor Text</p>
-            {flavorText.map(({ flavor_text, language, version_group }) => language.name === 'en' && (
-                <div key={`Flavor Text-${version_group.name}`} className="border-2 rounded-lg p-4 mt-2">
-                    <p className={`flex-2 text-xl font-semibold capitalize`}>{version_group.name}:</p>
-                    <p className='flex-1 text-lg mt-2'>{flavor_text}</p>
-                </div>
-            ))
-            }
-        </div>
-    )
-
     const PokemonNameCard = ({ pokemons = [] }) => (
         <div className="flex flex-col gap-2 border-2 rounded-lg p-4">
             <h2 className='text-xl font-semibold'>Pokemons</h2>
@@ -63,7 +51,7 @@ const AbilityDetail = ({ ability }) => {
     )
 
     return (
-        <div className='flex flex-col h-fit items-center justify-center bg-white rounded-md p-4 mx-4 max-w-[1440px] shadow-lg'>
+        <div className='w-full flex flex-col h-fit items-center justify-center bg-white rounded-md p-4 mx-4 max-w-[1440px] shadow-lg'>
             {Object.keys(ability).length > 0 && (
                 <div className="w-full flex flex-col gap-4 justify-between">
                     <TopicName topic='Ability' value={ability.name} />
