@@ -12,7 +12,7 @@ const FlavorTextEntry = ({ flavorText }) => (
                     sameFlavorText = []
                     let versions = [...sameVersions].toString().split(',').join(' | ')
                     return (
-                        <div key={`Flavor Text-${versions}`} className="border-2 rounded-lg p-4 mt-2">
+                        <div key={`Flavor Text-${versions}`} className="border-2 rounded-lg p-4 mt-2 shadow-md">
                             <p className={`flex-2 text-xl font-semibold capitalize`}>{versions}:</p>
                             <p className='flex-1 text-lg mt-2'>{flavor_text}</p>
                         </div>

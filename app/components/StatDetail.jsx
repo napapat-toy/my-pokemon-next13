@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const StatDetail = ({ stat }) => {
     const InfoCard = ({ data, title }) => (
-        <div className="flex flex-col gap-2 w-full md:w-fit border-2 rounded-lg p-4">
+        <div className="flex flex-col gap-2 w-full md:w-fit border-2 rounded-lg p-4 shadow-md">
             <h2 className='text-xl font-semibold'>{title}</h2>
             <div className="flex flex-wrap gap-1">
                 {data.map((d = [], index) => (
