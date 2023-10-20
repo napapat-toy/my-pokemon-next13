@@ -1,5 +1,6 @@
 'use client'
 
+import MoveDetail from '@/app/components/MoveDetail'
 import { useEffect, useState } from 'react'
 
 const Move = ({ params: { moveName } }) => {
@@ -18,10 +19,8 @@ const Move = ({ params: { moveName } }) => {
         )
     }
 
-    // console.log(move);
-
     return (
-        <div>Move</div>
+        <MoveDetail move={move} />
     )
 }
 
