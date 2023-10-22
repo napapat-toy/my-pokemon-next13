@@ -64,7 +64,6 @@ const MoveDetail = ({ move }) => {
             <p className='text-xl font-semibold mt-2'>Contest type: {type?.name && <span className='text-lg font-normal'>{`${type.name}`}</span>} </p>
             <div className="mt-4">
                 <p className='text-xl font-semibold'>Normal</p>
-
                 <div className="border-2 rounded-lg p-4 my-4 shadow-md">
                     <p className='text-xl font-semibold'>Use Before</p>
                     <div className="flex items-center flex-wrap">
@@ -92,6 +91,7 @@ const MoveDetail = ({ move }) => {
                     </div>
                 </div>
             </div>
+
             <div className="mt-4">
                 <p className='text-xl font-semibold'>Super</p>
                 <div className="border-2 rounded-lg p-4 my-4 shadow-md">
@@ -124,7 +124,16 @@ const MoveDetail = ({ move }) => {
         </div>
     )
 
-    console.log(move);
+    const EffectSection = ({ changes, entries, flavor_text }) => (
+        <div className="w-full flex-1 flex flex-col gap-4 border-2 rounded-lg p-4 mt-4">
+            <h2 className='text-3xl font-semibold capitalize'>
+                Effect
+            </h2>
+            <EffectChange effectChanges={changes} />
+            <EffectEntry effectEntry={entries} />
+            <FlavorTextEntry flavorText={flavor_text} />
+        </div>
+    )
 
     return (
         <>
@@ -142,15 +151,16 @@ const MoveDetail = ({ move }) => {
                         <InfoText title='Target' value={`${move.target.name}`} />
                         <InfoText title='Effect Chance' value={`${move.effect_chance}%`} />
                     </div>
-                    <ContestSection combo={move.contest_combos} effect={move.contest_effect} type={move.contest_type} />
-                    <div className="w-full flex-1 flex flex-col gap-4 border-2 rounded-lg p-4 mt-4">
-                        <h2 className='text-3xl font-semibold capitalize'>
-                            Effect
-                        </h2>
-                        <EffectChange effectChanges={move.effect_changes} />
-                        <EffectEntry effectEntry={move.effect_entries} />
-                        <FlavorTextEntry flavorText={move.flavor_text_entries} />
-                    </div>
+                    <ContestSection
+                        combo={move.contest_combos}
+                        effect={move.contest_effect}
+                        type={move.contest_type}
+                    />
+                    <EffectSection
+                        changes={move.effect_changes}
+                        entries={move.effect_entries}
+                        flavor_text={move.flavor_text_entries}
+                    />
                     <PokemonNameCard pokemons={move.learned_by_pokemon} />
                 </div>
             )}
