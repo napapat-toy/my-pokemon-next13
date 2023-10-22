@@ -1,6 +1,6 @@
 'use client'
 
-import StatDetail from '@/app/components/StatDetail'
+import StatDetail from '@/app/components/Detail/StatDetail'
 import { useEffect, useState } from 'react'
 
 const Stat = ({ params: { statName } }) => {

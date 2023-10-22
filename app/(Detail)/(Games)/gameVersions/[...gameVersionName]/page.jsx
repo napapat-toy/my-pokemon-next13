@@ -1,6 +1,6 @@
 'use client'
 
-import GameVersionDetail from '@/app/components/GameVersionDetail'
+import GameVersionDetail from '@/app/components/Detail/GameVersionDetail'
 import { useEffect, useState } from 'react'
 
 const Version = ({ params: { gameVersionName } }) => {

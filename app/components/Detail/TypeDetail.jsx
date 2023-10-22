@@ -1,5 +1,5 @@
 import Link from "next/link"
-import TypeCard from "./Cards/TypeCard"
+import TypeCard from "../Cards/TypeCard"
 
 const TypeDetail = ({ type }) => {
     const DamageRelationsCard = ({ name, type }) => (
@@ -40,7 +40,7 @@ const TypeDetail = ({ type }) => {
     )
 
     return (
-        <div className='bg-white rounded-md p-4 mx-4 max-w-[1440px] shadow-lg'>
+        <>
             <div className="flex flex-col items-center gap-4">
                 <div className="flex items-center gap-2">
                     <h2 className='text-4xl font-semibold capitalize'>
@@ -57,7 +57,7 @@ const TypeDetail = ({ type }) => {
                 <PokemonInfoCard pokemons={type.pokemon} />
             </div>
 
-        </div>
+        </>
     )
 }
 

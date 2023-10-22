@@ -1,6 +1,6 @@
 'use client'
 
-import TypeDetail from '@/app/components/TypeDetail'
+import TypeDetail from '@/app/components/Detail/TypeDetail'
 import { useEffect, useState } from 'react'
 
 const Type = ({ params: { typeName } }) => {

@@ -1,6 +1,6 @@
 'use client'
 
-import AbilityDetail from '@/app/components/AbilityDetail'
+import AbilityDetail from '@/app/components/Detail/AbilityDetail'
 import { useEffect, useState } from 'react'
 
 const Ability = ({ params: { abilityName } }) => {

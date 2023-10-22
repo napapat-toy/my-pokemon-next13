@@ -1,5 +1,5 @@
 import Link from "next/link";
-import FlavorTextEntry from "./FlavorTextEntry";
+import FlavorTextEntry from "../FlavorTextEntry";
 
 const AbilityDetail = ({ ability }) => {
 
@@ -51,7 +51,7 @@ const AbilityDetail = ({ ability }) => {
     )
 
     return (
-        <div className='w-full flex flex-col h-fit items-center justify-center bg-white rounded-md p-4 mx-4 max-w-[1440px] shadow-lg'>
+        <>
             {Object.keys(ability).length > 0 && (
                 <div className="w-full flex flex-col gap-4 justify-between">
                     <TopicName topic='Ability' value={ability.name} />
@@ -63,7 +63,7 @@ const AbilityDetail = ({ ability }) => {
                     <PokemonNameCard pokemons={ability.pokemon} />
                 </div>
             )}
-        </div>
+        </>
     )
 }
 

@@ -38,7 +38,7 @@ const StatDetail = ({ stat }) => {
     )
 
     return (
-        <div className='bg-white rounded-md p-4 mx-4 max-w-[1440px] shadow-lg'>
+        <>
             <div className="flex flex-col items-center gap-4">
                 <h2 className='flex items-center text-4xl font-semibold capitalize py-4 gap-4'>
                     Stat: <p className='font-light'>{stat.name}</p>
@@ -46,7 +46,7 @@ const StatDetail = ({ stat }) => {
                 <AffectingCard title='Affecting Moves' {...stat.affecting_moves} />
                 <AffectingCard title='Affecting Natures' {...stat.affecting_natures} />
             </div>
-        </div>
+        </>
     )
 }
 

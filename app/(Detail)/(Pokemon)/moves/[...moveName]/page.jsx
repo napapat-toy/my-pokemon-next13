@@ -1,6 +1,6 @@
 'use client'
 
-import MoveDetail from '@/app/components/MoveDetail'
+import MoveDetail from '@/app/components/Detail/MoveDetail'
 import { useEffect, useState } from 'react'
 
 const Move = ({ params: { moveName } }) => {

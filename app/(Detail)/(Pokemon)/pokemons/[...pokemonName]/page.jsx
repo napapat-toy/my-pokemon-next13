@@ -1,6 +1,6 @@
 'use client'
 
-import PokemonDetail from '@/app/components/PokemonDetail'
+import PokemonDetail from '@/app/components/Detail/PokemonDetail'
 import { useEffect, useState } from 'react'
 
 const Pokemon = ({ params: { pokemonName } }) => {

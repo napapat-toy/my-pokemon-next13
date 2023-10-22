@@ -1,6 +1,6 @@
-import TypeCard from './Cards/TypeCard';
+import TypeCard from '../Cards/TypeCard';
 import Link from 'next/link';
-import FlavorTextEntry from './FlavorTextEntry';
+import FlavorTextEntry from '../FlavorTextEntry';
 
 const MoveDetail = ({ move }) => {
 
@@ -127,7 +127,7 @@ const MoveDetail = ({ move }) => {
     console.log(move);
 
     return (
-        <div className='w-full flex flex-col h-fit items-center justify-center bg-white rounded-md p-4 mx-4 max-w-[1440px] shadow-lg'>
+        <>
             {Object.keys(move).length > 0 && (
                 <div className="w-full ">
                     <h2 className='text-3xl font-semibold capitalize text-center'>
@@ -154,7 +154,7 @@ const MoveDetail = ({ move }) => {
                     <PokemonNameCard pokemons={move.learned_by_pokemon} />
                 </div>
             )}
-        </div>
+        </>
     )
 }
 

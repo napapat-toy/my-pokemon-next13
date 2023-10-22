@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import TypeCard from './Cards/TypeCard'
+import TypeCard from '../Cards/TypeCard'
 
 const NotFound = () => (
   <div className="flex flex-col items-center">
@@ -81,7 +81,7 @@ const GameVersion = ({ versions }) => (
 
 const PokemonDetail = ({ pokemon = [] }) => {
   return (
-    <div className='flex flex-col h-fit items-center bg-white rounded-md p-4 mx-4 max-w-[1440px] shadow-lg'>
+    <>
       {Object.keys(pokemon).length > 0 ? (
         <div className="flex flex-col gap-2 items-center">
           <h2 className='text-2xl text-center font-bold text-gray-800 capitalize'>{pokemon.name}</h2>
@@ -116,7 +116,7 @@ const PokemonDetail = ({ pokemon = [] }) => {
       ) : (
         <NotFound />
       )}
-    </div>
+    </>
   )
 }
 
