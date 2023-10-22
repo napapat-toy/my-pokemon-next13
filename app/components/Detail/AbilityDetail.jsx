@@ -22,14 +22,14 @@ const AbilityDetail = ({ ability }) => {
     return (
         <>
             {Object.keys(ability).length > 0 && (
-                <div className="w-full flex flex-col gap-4 justify-between">
+                <div className="w-full flex flex-col justify-between">
                     <HeaderText title='Ability' value={ability.name} />
                     <div className="flex flex-col gap-4">
                         <EffectChange effectChanges={ability.effect_changes} shadowInEntry />
                         <EffectEntry effectEntry={ability.effect_entries} />
                         <FlavorTextEntry flavorText={ability.flavor_text_entries} />
+                        <PokemonNameCard pokemons={ability.pokemon} />
                     </div>
-                    <PokemonNameCard pokemons={ability.pokemon} />
                 </div>
             )}
         </>

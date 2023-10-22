@@ -32,7 +32,7 @@ const NatureDetail = ({ nature }) => {
         <>
             <HeaderText title='Nature' value={nature.name} />
             {Object.keys(nature).length > 0 && (
-                <div className="flex flex-col md:flex-row items-start gap-4 mt-4">
+                <div className="flex flex-col md:flex-row items-start gap-4">
                     <div className="flex flex-col gap-4">
                         <div className="border-2 rounded-lg p-4">
                             <InfoText title='Increase Stat' value={nature.increased_stat?.name} />

@@ -39,11 +39,16 @@ const StatDetail = ({ stat }) => {
     )
 
     return (
-        <div className="flex flex-col items-center gap-4">
+        <>
             <HeaderText title='Stat' value={stat.name} />
-            <AffectingCard title='Affecting Moves' {...stat.affecting_moves} />
-            <AffectingCard title='Affecting Natures' {...stat.affecting_natures} />
-        </div>
+            {Object.keys(stat).length > 0 && (
+                <div className="w-full flex flex-col items-center gap-4">
+                    <AffectingCard title='Affecting Moves' {...stat.affecting_moves} />
+                    <AffectingCard title='Affecting Natures' {...stat.affecting_natures} />
+                </div>
+            )}
+
+        </>
     )
 }
 

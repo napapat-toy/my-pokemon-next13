@@ -77,9 +77,9 @@ const GameVersion = ({ versions }) => (
 const PokemonDetail = ({ pokemon = [] }) => {
   return (
     <>
+      <HeaderText title={pokemon.name} />
       {Object.keys(pokemon).length > 0 ? (
-        <div className="flex flex-col gap-2 items-center">
-          <HeaderText title={pokemon.name} />
+        <div className="flex flex-col gap-4 items-center">
           <div className="flex flex-col">
             <Image
               src={pokemon.sprites.front_default ? pokemon.sprites.front_default : '/Poké_Ball_icon.svg.png'}
@@ -90,7 +90,7 @@ const PokemonDetail = ({ pokemon = [] }) => {
               className="object-cover"
             />
           </div>
-          <div className="w-full flex flex-col md:flex-row gap-4 justify-between">
+          <div className="w-full flex flex-col md:flex-row gap-2 justify-between">
             <div className="flex-1 flex flex-col border-2 rounded-lg p-4">
               <InfoText title='ID' value={pokemon.id} />
               <InfoText title='Height' value={`${(pokemon.height / 10).toFixed(1)} m`} />

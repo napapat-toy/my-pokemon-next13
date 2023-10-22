@@ -9,7 +9,7 @@ import EffectEntry from '../EffectEntry';
 const MoveDetail = ({ move }) => {
 
     const TypeSection = ({ type }) => (
-        <div className="flex items-center gap-2 my-2">
+        <div className="flex items-center gap-2">
             <h2 className='text-xl font-semibold capitalize'>
                 Type:
             </h2>
@@ -18,7 +18,7 @@ const MoveDetail = ({ move }) => {
     )
 
     const PokemonNameCard = ({ pokemons = [] }) => (
-        <div className="flex flex-col gap-2 border-2 rounded-lg p-4 mt-2">
+        <div className="flex flex-col gap-2 border-2 rounded-lg p-4">
             <h2 className='text-xl font-semibold'>Pokemons</h2>
             <div className="flex flex-wrap gap-2">
                 {pokemons?.map((pokemon, index) => (
@@ -30,8 +30,8 @@ const MoveDetail = ({ move }) => {
         </div>
     )
 
-    const ContestSection = ({ combo, effect, type }) => (
-        <div className="border-2 rounded-lg p-4 my-4">
+    const ContestSection = ({ combo, type }) => (
+        <div className="border-2 rounded-lg p-4">
             <h2 className='text-3xl font-semibold'>Contest</h2>
             <p className='text-xl font-semibold mt-2'>Contest type: {type?.name && <span className='text-lg font-normal'>{`${type.name}`}</span>} </p>
             <div className="mt-4">
@@ -97,7 +97,7 @@ const MoveDetail = ({ move }) => {
     )
 
     const EffectSection = ({ changes, entries, flavor_text }) => (
-        <div className="w-full flex-1 flex flex-col gap-4 border-2 rounded-lg p-4 mt-4">
+        <div className="w-full flex-1 flex flex-col gap-4 border-2 rounded-lg p-4">
             <h2 className='text-3xl font-semibold capitalize'>
                 Effect
             </h2>
@@ -109,9 +109,9 @@ const MoveDetail = ({ move }) => {
 
     return (
         <>
+            <HeaderText title='Move' value={move.name} />
             {Object.keys(move).length > 0 && (
-                <div className="w-full ">
-                    <HeaderText title='Move' value={move.name} />
+                <div className="w-full flex flex-col gap-4">
                     <div className="w-full flex-1 flex flex-col md:flex-row justify-evenly items-start md:items-center md:divide-x-4 divide-x-0 divide-sky-400 border-2 rounded-lg p-4 mt-4">
                         <TypeSection type={move.type.name} />
                         <InfoText title='Power' value={`${move.power}`} />
@@ -123,7 +123,6 @@ const MoveDetail = ({ move }) => {
                     </div>
                     <ContestSection
                         combo={move.contest_combos}
-                        effect={move.contest_effect}
                         type={move.contest_type}
                     />
                     <EffectSection
