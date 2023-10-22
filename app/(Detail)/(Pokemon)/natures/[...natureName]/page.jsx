@@ -1,5 +1,6 @@
 'use client'
 
+import NatureDetail from '@/app/components/Detail/NatureDetail'
 import { useEffect, useState } from 'react'
 
 const Nature = ({ params: { natureName } }) => {
@@ -18,10 +19,8 @@ const Nature = ({ params: { natureName } }) => {
         )
     }
 
-    // console.log(nature);
-
     return (
-        <div>Nature</div>
+        <NatureDetail nature={nature} />
     )
 }
 
