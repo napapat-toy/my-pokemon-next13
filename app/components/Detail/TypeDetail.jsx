@@ -40,24 +40,21 @@ const TypeDetail = ({ type }) => {
     )
 
     return (
-        <>
-            <div className="flex flex-col items-center gap-4">
-                <div className="flex items-center gap-2">
-                    <h2 className='text-4xl font-semibold capitalize'>
-                        Type:
-                    </h2>
-                    <TypeCard typeName={type.name} />
-                </div>
-                <div className="w-full flex flex-wrap gap-2">
-                    {type.damage_relations && Object.entries(type.damage_relations).map(([key, type]) => (
-                        <DamageRelationsCard key={`${key}`} name={key} type={type} />
-                    ))}
-                </div>
-                <MoveInfoCard moves={type.moves} />
-                <PokemonInfoCard pokemons={type.pokemon} />
+        <div className="flex flex-col items-center gap-4">
+            <div className="flex items-center gap-2">
+                <h2 className='text-4xl font-semibold capitalize'>
+                    Type:
+                </h2>
+                <TypeCard typeName={type.name} />
             </div>
-
-        </>
+            <div className="w-full flex flex-wrap gap-2">
+                {type.damage_relations && Object.entries(type.damage_relations).map(([key, type]) => (
+                    <DamageRelationsCard key={`${key}`} name={key} type={type} />
+                ))}
+            </div>
+            <MoveInfoCard moves={type.moves} />
+            <PokemonInfoCard pokemons={type.pokemon} />
+        </div>
     )
 }
 

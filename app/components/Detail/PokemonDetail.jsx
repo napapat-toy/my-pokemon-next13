@@ -1,18 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import TypeCard from '../Cards/TypeCard'
+import InfoText from '../InfoText'
+import HeaderText from '../HeaderText'
 
 const NotFound = () => (
   <div className="flex flex-col items-center">
     <h2 className='text-3xl font-bold p-8'>Not found</h2>
     <Link href={`/`} className='py-2 px-6 h-full bg-slate-400 hover:bg-slate-700 hover:text-white rounded-md'>Back</Link>
-  </div>
-)
-
-const InfoText = ({ title, value }) => (
-  <div className="flex gap-2">
-    <p className={`text-xl font-semibold capitalize`}>{title}:</p>
-    <p className='text-lg'>{value}</p>
   </div>
 )
 
@@ -84,7 +79,7 @@ const PokemonDetail = ({ pokemon = [] }) => {
     <>
       {Object.keys(pokemon).length > 0 ? (
         <div className="flex flex-col gap-2 items-center">
-          <h2 className='text-2xl text-center font-bold text-gray-800 capitalize'>{pokemon.name}</h2>
+          <HeaderText title={pokemon.name} />
           <div className="flex flex-col">
             <Image
               src={pokemon.sprites.front_default ? pokemon.sprites.front_default : '/Poké_Ball_icon.svg.png'}

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import HeaderText from '../HeaderText'
 
 const StatDetail = ({ stat }) => {
     const InfoCard = ({ data, title }) => (
@@ -38,15 +39,11 @@ const StatDetail = ({ stat }) => {
     )
 
     return (
-        <>
-            <div className="flex flex-col items-center gap-4">
-                <h2 className='flex items-center text-4xl font-semibold capitalize py-4 gap-4'>
-                    Stat: <p className='font-light'>{stat.name}</p>
-                </h2>
-                <AffectingCard title='Affecting Moves' {...stat.affecting_moves} />
-                <AffectingCard title='Affecting Natures' {...stat.affecting_natures} />
-            </div>
-        </>
+        <div className="flex flex-col items-center gap-4">
+            <HeaderText title='Stat' value={stat.name} />
+            <AffectingCard title='Affecting Moves' {...stat.affecting_moves} />
+            <AffectingCard title='Affecting Natures' {...stat.affecting_natures} />
+        </div>
     )
 }
 

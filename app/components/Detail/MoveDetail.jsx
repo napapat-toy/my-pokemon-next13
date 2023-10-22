@@ -1,15 +1,12 @@
 import TypeCard from '../Cards/TypeCard';
 import Link from 'next/link';
 import FlavorTextEntry from '../FlavorTextEntry';
+import InfoText from '../InfoText';
+import HeaderText from '../HeaderText';
+import EffectChange from '../EffectChange';
+import EffectEntry from '../EffectEntry';
 
 const MoveDetail = ({ move }) => {
-
-    const InfoText = ({ title, value }) => (
-        <div className="flex gap-2">
-            <p className={`text-xl font-semibold capitalize`}>{title}:</p>
-            <p className='text-lg'>{value}</p>
-        </div>
-    )
 
     const TypeSection = ({ type }) => (
         <div className="flex items-center gap-2 my-2">
@@ -17,31 +14,6 @@ const MoveDetail = ({ move }) => {
                 Type:
             </h2>
             <TypeCard typeName={type} />
-        </div>
-    )
-
-    const EffectChange = ({ effectChanges }) => (
-        <div className="flex flex-col mdd:flex-row gap-2 border-2 rounded-lg p-4 shadow-md">
-            <p className={`flex-2 text-xl font-semibold capitalize`}>Effect Changes</p>
-            {effectChanges.map(({ effect_entries, version_group }) => (
-                <div key={`Effect Changes-${version_group.name}`} className="mt-2">
-                    <p className={`flex-2 text-xl font-semibold capitalize`}>{version_group.name}:</p>
-                    <EffectEntry effectEntry={effect_entries} />
-                </div>
-            ))
-            }
-        </div>
-    )
-    const EffectEntry = ({ effectEntry }) => (
-        <div className="flex flex-col mdd:flex-row gap-2 border-2 rounded-lg p-4 shadow-md">
-            <p className={`flex-2 text-xl font-semibold capitalize`}>Effect Entries</p>
-            {effectEntry.map((effect_entry) => effect_entry.language.name === 'en' && (
-                <div key={`effect-${effect_entry.language}`}>
-                    <p className='flex-1 text-lg'>{effect_entry.effect}</p>
-                    {effect_entry.short_effect && <p className='flex-1 text-lg mt-4'><span className="font-light text-base">In Short: </span>{effect_entry.short_effect}</p>}
-                </div>
-            )
-            )}
         </div>
     )
 
@@ -129,8 +101,8 @@ const MoveDetail = ({ move }) => {
             <h2 className='text-3xl font-semibold capitalize'>
                 Effect
             </h2>
-            <EffectChange effectChanges={changes} />
-            <EffectEntry effectEntry={entries} />
+            <EffectChange effectChanges={changes} shadow />
+            <EffectEntry effectEntry={entries} shadow />
             <FlavorTextEntry flavorText={flavor_text} />
         </div>
     )
@@ -139,9 +111,7 @@ const MoveDetail = ({ move }) => {
         <>
             {Object.keys(move).length > 0 && (
                 <div className="w-full ">
-                    <h2 className='text-3xl font-semibold capitalize text-center'>
-                        Move: <span className='font-normal'>{move.name}</span>
-                    </h2>
+                    <HeaderText title='Move' value={move.name} />
                     <div className="w-full flex-1 flex flex-col md:flex-row justify-evenly items-start md:items-center md:divide-x-4 divide-x-0 divide-sky-400 border-2 rounded-lg p-4 mt-4">
                         <TypeSection type={move.type.name} />
                         <InfoText title='Power' value={`${move.power}`} />

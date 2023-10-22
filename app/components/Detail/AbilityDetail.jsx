@@ -1,41 +1,10 @@
 import Link from "next/link";
 import FlavorTextEntry from "../FlavorTextEntry";
+import HeaderText from "../HeaderText";
+import EffectChange from "../EffectChange";
+import EffectEntry from "../EffectEntry";
 
 const AbilityDetail = ({ ability }) => {
-
-    const TopicName = ({ topic, value }) => (
-        <div className="w-full flex justify-center items-center gap-2">
-            <h2 className='text-3xl md:text-4xl font-semibold capitalize'>
-                {topic}:
-            </h2>
-            <p className="font-light text-3xl md:text-4xl capitalize">{value}</p>
-        </div>
-    )
-
-    const EffectChange = ({ effectChanges }) => (
-        <div className="flex flex-col mdd:flex-row gap-2 border-2 rounded-lg p-4">
-            <p className={`flex-2 text-xl font-semibold capitalize`}>Effect Changes</p>
-            {effectChanges.map(({ effect_entries, version_group }) => (
-                <div key={`Effect Changes-${version_group.name}`} className="mt-2">
-                    <p className={`flex-2 text-xl font-semibold capitalize`}>{version_group.name}:</p>
-                    <EffectEntry effectEntry={effect_entries} />
-                </div>
-            ))
-            }
-        </div>
-    )
-    const EffectEntry = ({ effectEntry }) => (
-        <div className="flex flex-col mdd:flex-row gap-2 border-2 rounded-lg p-4 mt-2">
-            <p className={`flex-2 text-xl font-semibold capitalize`}>Effect Entries</p>
-            {effectEntry.map((effect_entry) => effect_entry.language.name === 'en' && (
-                <div key={`effect-${effect_entry.language}`}>
-                    <p className='flex-1 text-lg'>{effect_entry.effect}</p>
-                    {effect_entry.short_effect && <p className='flex-1 text-lg mt-4'><span className="font-light text-base">In Short: </span>{effect_entry.short_effect}</p>}
-                </div>
-            )
-            )}
-        </div>
-    )
 
     const PokemonNameCard = ({ pokemons = [] }) => (
         <div className="flex flex-col gap-2 border-2 rounded-lg p-4">
@@ -54,9 +23,9 @@ const AbilityDetail = ({ ability }) => {
         <>
             {Object.keys(ability).length > 0 && (
                 <div className="w-full flex flex-col gap-4 justify-between">
-                    <TopicName topic='Ability' value={ability.name} />
+                    <HeaderText title='Ability' value={ability.name} />
                     <div className="flex flex-col gap-4">
-                        <EffectChange effectChanges={ability.effect_changes} />
+                        <EffectChange effectChanges={ability.effect_changes} shadowInEntry />
                         <EffectEntry effectEntry={ability.effect_entries} />
                         <FlavorTextEntry flavorText={ability.flavor_text_entries} />
                     </div>
