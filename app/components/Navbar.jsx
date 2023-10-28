@@ -8,7 +8,7 @@ const Navbar = () => {
     const router = useRouter()
 
     return (
-        <div className="sticky z-50 top-0 w-full p-4 bg-sky-300 flex justify-center">
+        <nav className="sticky z-50 top-0 w-full p-4 bg-sky-300 flex justify-center">
             <div className="max-w-[1440px] w-full flex justify-between items-center">
                 {pathname !== '/' && (
                     <button
@@ -31,7 +31,7 @@ const Navbar = () => {
                     </button>
                 </Link>
             </div>
-        </div>
+        </nav>
     )
 }
 
