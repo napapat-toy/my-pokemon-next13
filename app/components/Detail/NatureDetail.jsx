@@ -4,7 +4,7 @@ import InfoText from "../InfoText";
 const NatureDetail = ({ nature }) => {
 
     const MoveBattleStylePreferences = ({ moveBattles = [] }) => (
-        <div className="border-2 rounded-lg p-4">
+        <div className="w-full border-2 rounded-lg p-4">
             <p className='text-xl font-semibold'>Move Battle Style Preferences</p>
             {moveBattles?.map(({ high_hp_preference, low_hp_preference, move_battle_style }, index) => (
                 <div key={`perference-${index}`} className="border-2 rounded-lg p-4 my-4 shadow-md">
@@ -31,7 +31,7 @@ const NatureDetail = ({ nature }) => {
         <>
             <HeaderText title='Nature' value={nature.name} />
             {Object.keys(nature).length > 0 && (
-                <div className="flex flex-col md:flex-row items-start gap-4">
+                <div className="w-full flex flex-col md:flex-row items-start gap-4">
                     <div className="w-full flex flex-col gap-4">
                         <div className="border-2 rounded-lg p-4">
                             <InfoText title='Increase Stat' value={nature.increased_stat?.name} />
